@@ -9,11 +9,14 @@ const server = express();
 const dev = process.env.NODE_ENV !== 'production';
 const PORT = process.env.PORT || 5000;
 
-server.use('/graphql', graphqlHTTP((req, res, gql) => ({
-  schema,
-  graphiql: dev,
-  pretty: dev,
-})));
+server.use(
+  '/graphql',
+  graphqlHTTP((req, res, gql) => ({
+    schema,
+    graphiql: dev,
+    pretty: dev,
+  })),
+);
 
 server.listen(PORT, error => {
   if (error) throw error;
