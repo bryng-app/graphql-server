@@ -1,8 +1,8 @@
 const { GraphQLID, GraphQLNonNull } = require('graphql');
-const TestType = require('../types/test');
+const UserType = require('../types/user');
 
 module.exports = {
-  type: TestType,
+  type: UserType,
   args: {
     id: {
       name: 'id',
@@ -13,8 +13,11 @@ module.exports = {
     return new Promise((resolve, reject) => {
       resolve({
         id: 'testingId',
-        name: 'Testing Name',
-        date: 'Today',
+        fullname: 'Florian Woelki',
+        email: 'florianwoelki@gmx.de',
+        username: 'florianwoelki',
+        phoneNumber: '01515 8364185',
+        age: 20,
       });
     });
   },
