@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -13,5 +14,8 @@
     "express": "^4.16.4",
     "express-graphql": "^0.7.1",
     "graphql": "^14.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
   }
 }
