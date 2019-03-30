@@ -1,43 +1,27 @@
-require('dotenv').config();
+import express from 'express';
+import bodyParser from 'body-parser';
+import path from 'path';
+import { graphqlExpress, graphiqlExpress } from 'apollo-server-express';
+import { makeExecutableSchema } from 'graphql-tools';
+import { fileLoader, mergeTypes, mergeResolvers } from 'merge-graphql-schemas';
 
-const express = require('express');
-const graphqlHTTP = require('express-graphql');
-const expressJwt = require('express-jwt');
-const jwt = require('jsonwebtoken');
-let schema = require('./schema');
-
-const server = express();
-
-const dev = process.env.NODE_ENV !== 'production';
-const PORT = process.env.PORT || 5000;
-
-server.use('/login', (req, res) => {
-  res.json({
-    id: 1,
-    username: 'admin',
-    jwt: jwt.sign(
-      {
-        id: 1,
-        username: 'admin',
-      },
-      'testest',
-      { expiresIn: 60 * 60 },
-    ),
-  });
-});
-
-server.use(
-  '/graphql',
-  expressJwt({ secret: 'testest' }),
-  graphqlHTTP((req, res, gql) => ({
-    schema,
-    graphiql: dev,
-    pretty: dev,
-  })),
+const typeDefs = mergeTypes(fileLoader(path.join(__dirname, './schema')));
+const resolvers = mergeResolvers(
+  fileLoader(path.join(__dirname, './resolvers')),
 );
 
-server.listen(PORT, error => {
-  if (error) throw error;
+const schema = makeExecutableSchema({
+  typeDefs,
+  resolvers,
+});
 
-  console.log(`> Ready on Port ${PORT}`);
+const app = express();
+const endpointURL = '/graphql';
+
+app.use(endpointURL, bodyParser.json(), graphqlExpress({ schema }));
+
+app.use('/graphiql', graphiqlExpress({ endpointURL }));
+
+app.listen(5000, () => {
+  console.log('Server is listening on port 8080'); // eslint-disable-line
 });
