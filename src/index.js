@@ -11,9 +11,10 @@ import mocks from './mocks';
 dotenv.config();
 
 const IS_PRODUCTION = process.env.NODE_ENV === 'production';
-const PORT = process.env.PORT || 5000;
+const IS_TEST = process.env.NODE_ENV === 'test';
+const PORT = process.env.PORT || 8080;
 
-db.connect(process.env.DB_URL, !IS_PRODUCTION);
+db.connect(`${process.env.DB_URL}${IS_TEST ? process.env.TEST_DB : process.env.REAL_DB}`, !IS_PRODUCTION);
 
 const typeDefs = mergeTypes(fileLoader(path.join(__dirname, './schema')));
 const resolvers = mergeResolvers(
