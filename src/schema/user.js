@@ -3,6 +3,10 @@ export default `
   type User {
     id: ID!
     fullname: String!
+    email: String!
+    username: String!
+    phoneNumber: String!
+    age: Int
   }
 
   type Query {

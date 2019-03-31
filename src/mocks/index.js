@@ -1,3 +1,4 @@
+/*
 import faker from 'faker';
 
 import User from '../models/User';
@@ -8,9 +9,15 @@ export default async () => {
   try {
     await User.deleteMany();
 
-    await Array.from({ length: USER_TOTAL })
-      .forEach(() => User.create({ fullname: faker.lorem.slug(1) }));
+    await Array.from({ length: USER_TOTAL }).forEach(() => User.create({
+      fullname: faker.name.findName(),
+      email: faker.internet.email(),
+      username: faker.lorem.slug(1),
+      phoneNumber: faker.phone.phoneNumber(),
+      age: 99,
+    }));
   } catch (error) {
     throw error;
   }
 };
+*/
