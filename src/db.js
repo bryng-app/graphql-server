@@ -2,9 +2,9 @@ import mongoose from 'mongoose';
 
 mongoose.Promise = global.Promise;
 
-mongoose.set('debug', true);
+function connect(dbUrl, isDebug = false) {
+  mongoose.set('debug', isDebug);
 
-function connect(dbUrl) {
   mongoose
     .connect(dbUrl, { useNewUrlParser: true })
     .then(() => {

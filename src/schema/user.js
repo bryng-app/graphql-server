@@ -1,17 +1,13 @@
 export default `
   
   type User {
-    id: ID!
+    _id: ID!
     fullname: String!
-    email: String!
-    username: String!
-    phoneNumber: String!
-    age: Int
   }
 
   type Query {
     getUser(id: ID!): User!
-    allUsers(id: ID): [User!]!
+    allUsers: [User!]!
   }
 
   type Mutation {
