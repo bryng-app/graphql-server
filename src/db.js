@@ -15,6 +15,11 @@ function connect(dbUrl, isDebug = false) {
     });
 }
 
+function disconnect() {
+  mongoose.connection.close();
+}
+
 module.exports = {
   connect,
+  disconnect,
 };
