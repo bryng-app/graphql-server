@@ -4,8 +4,9 @@ export default `
     id: ID!
     fullname: String!
     email: String!
+    password: String!
     username: String!
-    phoneNumber: String!
+    phoneNumber: String
     age: Int
   }
 
@@ -15,7 +16,8 @@ export default `
   }
 
   type Mutation {
-    createUser(username: String!, email: String!, password: String!): User!
+    createUser(fullname: String!, email: String!, password: String!, username: String!, phoneNumber: String, age: Int): User!
+    login(email: String!, password: String!): User!
   }
 
 `;

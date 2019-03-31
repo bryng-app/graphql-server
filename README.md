@@ -4,8 +4,9 @@ User {
   id: ID!
   fullname: String!
   email: String!
+  password: String!
   username: String!
-  phoneNumber: String!
+  phoneNumber: String
   age: Int
 }
 

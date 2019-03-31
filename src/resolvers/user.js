@@ -5,8 +5,15 @@ export default {
     allUsers: () => User.find({}),
   },
   Mutation: {
-    createUser: (parent, args, context) => ({
-      args,
-    }),
+    createUser: (_, args) => User.create(args),
+    login: async (_, { email, password }) => {
+      const user = await User.findOne({ email });
+
+      if (!user || !user.authenticateUser(password)) {
+        throw new Error('User or password is incorrect!');
+      }
+
+      return user;
+    },
   },
 };

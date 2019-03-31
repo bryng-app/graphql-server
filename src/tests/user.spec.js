@@ -17,6 +17,7 @@ describe('user resolvers', () => {
             age
             username
             email
+            password
           }
         }
       `,
