@@ -2,7 +2,7 @@ require('dotenv').config();
 require('@babel/polyfill'); // eslint-disable-line
 const mongoose = require('mongoose');
 
-beforeEach(async (done) => {
+beforeAll(async (done) => {
   await mongoose
     .connect(`${process.env.DB_URL}${process.env.TEST_DB}`, {
       useNewUrlParser: true,
@@ -13,9 +13,8 @@ beforeEach(async (done) => {
     });
 });
 
-afterEach(async (done) => {
+afterAll(async (done) => {
+  await mongoose.connection.db.dropDatabase();
   await mongoose.connection.close();
   return done();
 });
-
-afterAll(done => done());

@@ -4,7 +4,7 @@ module.exports = {
     describe: 1,
     test: 1,
     expect: 1,
-    beforeEach: 1,
+    beforeAll: 1,
     afterEach: 1,
     afterAll: 1,
   },
