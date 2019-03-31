@@ -6,7 +6,7 @@ import { makeExecutableSchema } from 'graphql-tools';
 import { fileLoader, mergeTypes, mergeResolvers } from 'merge-graphql-schemas';
 import dotenv from 'dotenv';
 import db from './db';
-import mocks from './mocks';
+// import mocks from './mocks';
 
 dotenv.config();
 
@@ -35,8 +35,14 @@ if (!IS_PRODUCTION) {
   app.use('/graphiql', graphiqlExpress({ endpointURL }));
 }
 
+app.listen(PORT, () => {
+  console.log(`Server is listening on port ${PORT}`); // eslint-disable-line
+});
+
+/*
 mocks().then(() => {
   app.listen(PORT, () => {
     console.log(`Server is listening on port ${PORT}`); // eslint-disable-line
   });
 });
+*/
