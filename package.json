@@ -19,7 +19,8 @@
     "graphql": "^14.2.0",
     "graphql-tools": "^4.0.4",
     "jsonwebtoken": "^8.5.1",
-    "merge-graphql-schemas": "^1.5.8"
+    "merge-graphql-schemas": "^1.5.8",
+    "mongoose": "^5.4.20"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
