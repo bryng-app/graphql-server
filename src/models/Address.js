@@ -6,6 +6,10 @@ const AddressSchema = new Schema({
   street: String,
   streetExtra: String,
   zipCode: Number,
-});
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+  },
+}, { timestamps: true });
 
 export default mongoose.model('Address', AddressSchema);

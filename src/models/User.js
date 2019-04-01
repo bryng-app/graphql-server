@@ -46,7 +46,7 @@ UserSchema.methods = {
   createToken() {
     return jwt.sign(
       {
-        _id: this._id, // eslint-disable-line
+        _id: this._id,
       },
       'test123', // TODO: Set jwt secret in env file
     );
