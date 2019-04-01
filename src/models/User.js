@@ -1,5 +1,6 @@
 import mongoose, { Schema } from 'mongoose';
 import { hashSync, compareSync } from 'bcrypt';
+import jwt from 'jsonwebtoken';
 
 const UserSchema = new Schema(
   {
@@ -18,6 +19,10 @@ const UserSchema = new Schema(
     fullname: String,
     password: String,
     age: Number,
+    address: {
+      type: Schema.Types.ObjectId,
+      ref: 'Address',
+    },
   },
   { timestamps: true },
 );
@@ -37,6 +42,14 @@ UserSchema.methods = {
   },
   authenticateUser(password) {
     return compareSync(password, this.password);
+  },
+  createToken() {
+    return jwt.sign(
+      {
+        _id: this._id, // eslint-disable-line
+      },
+      'test123', // TODO: Set jwt secret in env file
+    );
   },
 };
 

@@ -6,6 +6,7 @@ import { makeExecutableSchema } from 'graphql-tools';
 import { fileLoader, mergeTypes, mergeResolvers } from 'merge-graphql-schemas';
 import dotenv from 'dotenv';
 import db from './db';
+import auth from './services/auth';
 // import mocks from './mocks';
 
 dotenv.config();
@@ -29,7 +30,14 @@ const schema = makeExecutableSchema({
 const app = express();
 const endpointURL = '/graphql';
 
-app.use(endpointURL, bodyParser.json(), graphqlExpress({ schema }));
+app.use(auth.auth);
+
+app.use(endpointURL, bodyParser.json(), graphqlExpress(req => ({
+  schema,
+  context: {
+    user: req.user,
+  },
+})));
 
 if (!IS_PRODUCTION) {
   app.use('/graphiql', graphiqlExpress({ endpointURL }));

@@ -14,7 +14,7 @@ Address {
   Country: String!
   City: String!
   Street: String!
-  StreetNumber: String!
+  streetExtra: String!
   Zipcode: Int!
 }
 ```
