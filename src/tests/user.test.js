@@ -36,11 +36,7 @@ describe('user resolvers', () => {
       query: `
         mutation {
           createUser(fullname:"test test", email:"test@test.de", username:"test", phoneNumber:"03030303", password:"123456") {
-            fullname
             email
-            username
-            phoneNumber
-            age
           }
         }
       `,
@@ -50,11 +46,7 @@ describe('user resolvers', () => {
     expect(data).toMatchObject({
       data: {
         createUser: {
-          fullname: 'test test',
           email: 'test@test.de',
-          username: 'test',
-          phoneNumber: '03030303',
-          age: null,
         },
       },
     });
@@ -65,9 +57,7 @@ describe('user resolvers', () => {
       query: `
         mutation {
           login(email:"test@test.de", password:"123456") {
-            fullname
             email
-            username
           }
         }
       `,
@@ -77,9 +67,7 @@ describe('user resolvers', () => {
     expect(data).toMatchObject({
       data: {
         login: {
-          fullname: 'test test',
           email: 'test@test.de',
-          username: 'test',
         },
       },
     });
