@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import bodyParser from 'body-parser';
 import path from 'path';
 import { graphqlExpress, graphiqlExpress } from 'apollo-server-express';
@@ -29,6 +30,8 @@ const schema = makeExecutableSchema({
 
 const app = express();
 const endpointURL = '/graphql';
+
+app.use(cors());
 
 app.use(auth.auth);
 
