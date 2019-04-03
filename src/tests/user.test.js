@@ -84,17 +84,20 @@ describe('user resolvers', () => {
   test('addAddress', async () => {
     const response = await axios.post('http://127.0.0.1:8080/graphql', {
       query: `
-        addAddress(country:"germany", city:"berlin", street:"teststreet", zipCode:12622) {
-          country
-          city
-          street
-          zipCode
-          streetExtra
+        mutation {
+          addAddress(country:"germany", city:"berlin", street:"teststreet", zipCode:12622) {
+            country
+            city
+            street
+            zipCode
+            streetExtra
+          }
         }
       `,
     },
     {
       headers: {
+        'Content-Type': 'application/json',
         authorization: `Bearer ${authToken}`,
       },
     });
@@ -115,19 +118,21 @@ describe('user resolvers', () => {
 
   test('getAddress', async () => {
     const response = await axios.post('http://127.0.0.1:8080/graphql', {
-      authorization: `Bearer ${authToken}`,
       query: `
-        getAddress() {
-          city
-          country
-          street
-          zipCode
-          streetExtra
+        query {
+          getAddress {
+            city
+            country
+            street
+            zipCode
+            streetExtra
+          }
         }
       `,
     },
     {
       headers: {
+        'Content-Type': 'application/json',
         authorization: `Bearer ${authToken}`,
       },
     });
@@ -135,7 +140,7 @@ describe('user resolvers', () => {
     const { data } = response;
     expect(data).toMatchObject({
       data: {
-        addAddress: {
+        getAddress: {
           country: 'germany',
           city: 'berlin',
           street: 'teststreet',
