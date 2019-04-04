@@ -15,7 +15,7 @@ export default `
   }
 
   type Mutation {
-    addAddress(country: String!, city: String!, street: String!, zipCode: Int!, streetExtra: String): Address!
+    addAddress(country: String!, city: String!, street: String!, zipCode: Int!, streetExtra: String): Address
   }
 
 `;

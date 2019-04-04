@@ -13,8 +13,8 @@ export default `
 
   type Query {
     allStores: [Store!]!
-    getStores(name: String!): [Store!]!
-    getStore(id: ID!): Store!
+    getStores(name: String!): [Store!]
+    getStore(id: ID!): Store
   }
 
 `;
