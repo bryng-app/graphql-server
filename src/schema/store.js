@@ -3,6 +3,7 @@ export default `
   type Store {
     id: ID!
     name: String!
+    openingHours: String!
     location: GeoPosition!
   }
 

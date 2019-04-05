@@ -10,6 +10,7 @@ describe('store resolvers', () => {
   test('allStores', async () => {
     await Store.create({
       name: 'Netto',
+      openingHours: '08-20',
       location: {
         latitude: 123.3434343,
         longitude: 93.334343433,
@@ -17,6 +18,7 @@ describe('store resolvers', () => {
     });
     await Store.create({
       name: 'Lidl',
+      openingHours: '08-20',
       location: {
         latitude: 43.95959,
         longitude: 19.2939493,
@@ -24,6 +26,7 @@ describe('store resolvers', () => {
     });
     await Store.create({
       name: 'Netto',
+      openingHours: '08-20',
       location: {
         latitude: 43.123654,
         longitude: 12.3219495,
@@ -35,6 +38,7 @@ describe('store resolvers', () => {
         query {
           allStores {
             name
+            openingHours
             location {
               latitude
               longitude
@@ -45,32 +49,35 @@ describe('store resolvers', () => {
     });
 
     const { data } = response;
-    expect(data).toMatchObject({
+    expect(data).toEqual(expect.objectContaining({
       data: {
         allStores: [
           {
             location: {
-              latitude: 123.3434343,
-              longitude: 93.334343433,
+              latitude: expect.any(Number),
+              longitude: expect.any(Number),
             },
-            name: 'Netto',
+            name: expect.any(String),
+            openingHours: expect.any(String),
           },
           {
             location: {
-              latitude: 43.95959,
-              longitude: 19.2939493,
+              latitude: expect.any(Number),
+              longitude: expect.any(Number),
             },
-            name: 'Lidl',
+            name: expect.any(String),
+            openingHours: expect.any(String),
           },
           {
             location: {
-              latitude: 43.123654,
-              longitude: 12.3219495,
+              latitude: expect.any(Number),
+              longitude: expect.any(Number),
             },
-            name: 'Netto',
+            name: expect.any(String),
+            openingHours: expect.any(String),
           },
         ],
       },
-    });
+    }));
   });
 });
