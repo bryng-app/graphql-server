@@ -20,7 +20,6 @@ export default {
         const user = await User.create(args);
         return {
           token: user.createToken(),
-          email: args.email,
         };
       } catch (error) {
         throw error;
@@ -36,7 +35,6 @@ export default {
 
         return {
           token: user.createToken(),
-          email,
         };
       } catch (error) {
         throw error;
