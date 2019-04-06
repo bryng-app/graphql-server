@@ -1,6 +1,10 @@
 import mongoose, { Schema } from 'mongoose';
 import { hashSync, compareSync } from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
+
+dotenv.config();
+const secret = process.env.JWT_SECRET;
 
 const UserSchema = new Schema(
   {
@@ -48,7 +52,7 @@ UserSchema.methods = {
       {
         _id: this._id,
       },
-      'test123', // TODO: Set jwt secret in env file
+      secret,
     );
   },
 };

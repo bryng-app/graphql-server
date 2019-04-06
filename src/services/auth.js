@@ -1,8 +1,10 @@
 import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
 
 import User from '../models/User';
 
-const secret = 'test123';
+dotenv.config();
+const secret = process.env.JWT_SECRET;
 
 function decodeToken(token) {
   const arr = token.split(' ');
