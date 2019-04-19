@@ -8,6 +8,7 @@ export default `
     username: String!
     phoneNumber: String
     age: Int
+    avatar: String
   }
 
   type Query {
