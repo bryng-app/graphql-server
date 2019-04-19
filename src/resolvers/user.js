@@ -27,7 +27,8 @@ export default {
     },
     login: async (_, { email, password }) => {
       try {
-        const user = await User.findOne({ email });
+        const emailString = email.toLowerCase();
+        const user = await User.findOne({ email: emailString });
 
         if (!user || !user.authenticateUser(password)) {
           throw new Error('User or password is incorrect!');
