@@ -16,10 +16,7 @@ const UserSchema = new Schema(
       type: String,
       unique: true,
     },
-    phoneNumber: {
-      type: String,
-      unique: true,
-    },
+    phoneNumber: String,
     fullname: String,
     password: String,
     age: Number,
