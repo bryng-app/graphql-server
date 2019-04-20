@@ -1,4 +1,5 @@
 import User from '../models/User';
+import LoginToken from '../models/LoginToken';
 import auth from '../services/auth';
 
 export default {
@@ -32,6 +33,22 @@ export default {
 
         if (!user || !user.authenticateUser(password)) {
           throw new Error('User or password is incorrect!');
+        }
+
+        return {
+          token: user.createToken(),
+        };
+      } catch (error) {
+        throw error;
+      }
+    },
+    getJWTToken: async (_, { loginToken }) => {
+      try {
+        const userLoginToken = await LoginToken.findOne({ token: loginToken });
+        const user = await User.findById({ _id: userLoginToken.user });
+
+        if (!user) {
+          throw new Error('Token is incorrect!');
         }
 
         return {

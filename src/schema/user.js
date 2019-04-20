@@ -19,6 +19,7 @@ export default `
   type Mutation {
     createUser(fullname: String!, email: String!, password: String!, username: String!, phoneNumber: String, age: Int, avatar: String): Auth
     login(email: String!, password: String!): Auth
+    getJWTToken(loginToken: String!): Auth
   }
 
 `;
