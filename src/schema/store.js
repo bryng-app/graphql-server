@@ -13,10 +13,19 @@ export default `
     longitude: Float!
   }
 
+  input GeoPositionInput {
+    latitude: Float!
+    longitude: Float!
+  }
+
   type Query {
     allStores: [Store!]!
     getStores(name: String!): [Store!]
     getStore(id: ID!): Store
+  }
+
+  type Mutation {
+    createStore(name: String!, logo: String!, openingHours: String!, location: GeoPositionInput!): Store
   }
 
 `;
