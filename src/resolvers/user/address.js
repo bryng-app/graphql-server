@@ -1,5 +1,5 @@
-import Address from '../models/Address';
-import auth from '../services/auth';
+import Address from '../../models/user/Address';
+import auth from '../../services/auth';
 
 export default {
   Query: {

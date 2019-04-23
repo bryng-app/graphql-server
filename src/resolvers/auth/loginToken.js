@@ -1,6 +1,6 @@
 import crypto from 'crypto';
-import LoginToken from '../models/LoginToken';
-import auth from '../services/auth';
+import LoginToken from '../../models/auth/LoginToken';
+import auth from '../../services/auth';
 
 export default {
   Query: {

@@ -1,5 +1,5 @@
-import Location from '../models/Location';
-import auth from '../services/auth';
+import Location from '../../models/user/Location';
+import auth from '../../services/auth';
 
 export default {
   Query: {

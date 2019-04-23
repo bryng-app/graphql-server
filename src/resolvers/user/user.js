@@ -1,6 +1,6 @@
-import User from '../models/User';
-import LoginToken from '../models/LoginToken';
-import auth from '../services/auth';
+import User from '../../models/user/User';
+import LoginToken from '../../models/auth/LoginToken';
+import auth from '../../services/auth';
 
 export default {
   Query: {
