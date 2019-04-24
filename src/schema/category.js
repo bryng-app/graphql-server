@@ -9,6 +9,7 @@ export default `
   type Query {
     allCategories: [Category!]!
     getCategory(name: String!): Category
+    getProducts(name: String!): [Product!]!
   }
 
 `;
