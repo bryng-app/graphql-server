@@ -26,7 +26,9 @@ export default {
           if (err) {
             return;
           }
-          LoginToken.remove();
+          if (LoginToken != null) {
+            LoginToken.remove();
+          }
         });
 
         return LoginToken.create({ token, user: user._id });
