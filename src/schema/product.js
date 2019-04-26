@@ -4,8 +4,10 @@ export default `
     id: ID!
     name: String!
     image: String!
-    price: Int!
+    price: Double!
     weight: String!
+    storeName: String!
+    categoryName: String!
   }
 
   type Query {

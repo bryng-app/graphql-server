@@ -5,7 +5,6 @@ const ProductSchema = new Schema({
   image: String,
   price: Number,
   weight: String,
-  // TODO: Fix store and category name to real objects
   storeName: String,
   categoryName: String,
 });
