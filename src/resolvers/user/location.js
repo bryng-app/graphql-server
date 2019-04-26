@@ -24,8 +24,7 @@ export default {
     addLocation: async (_, args, { user }) => {
       try {
         await auth.requireAuth(user);
-        const location = Location.create(args);
-        return location;
+        return Location.create({ ...args, user: user._id });
       } catch (error) {
         throw error;
       }

@@ -2,7 +2,7 @@ export default `
 
   type Location {
     id: ID!
-    geoPosition: GeoPosition!
+    location: GeoPosition!
     user: User!
   }
 
