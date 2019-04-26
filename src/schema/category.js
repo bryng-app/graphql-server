@@ -3,7 +3,6 @@ export default `
   type Category {
     id: ID!
     name: String!
-    image: String!
   }
 
   type Query {
