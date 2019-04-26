@@ -4,7 +4,7 @@ export default `
     id: ID!
     name: String!
     image: String!
-    price: Double!
+    price: Float!
     weight: String!
     storeName: String!
     categoryName: String!
