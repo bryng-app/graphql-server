@@ -10,8 +10,4 @@ export default `
     categoryName: String!
   }
 
-  type Query {
-    getProducts(storeName: String!, categoryName: String!): [Product!]!
-  }
-
 `;
