@@ -10,4 +10,8 @@ export default `
     categoryName: String!
   }
 
+  type Query {
+    getProduct(id: String!): Product
+  }
+
 `;
